@@ -2,21 +2,24 @@ const jwt = require('jsonwebtoken');
 
 module.exports = function (req, res, next) {
   //Get token from header
+  console.log(req.headers.authorization);
 
-  const token = req.headers.authorization.split(' ')[1];
-  console.log('token: ', token);
+  if (req.headers.authorization) {
+    const token = req.headers.authorization.split(' ')[1];
 
-  //Check if token exist
-  if (!token) {
-    return res.status(401).json({ msg: 'Sin token, autorización denegada' });
-  }
-  //Verify token
-  try {
-    const decoded = jwt.verify(token, 'MyS3cr3t');
-    console.log(decoded);
-    req.user = decoded.user;
-    next();
-  } catch (err) {
-    res.status(401).json({ msg: 'Token no es válido' });
+    //Check if token exist
+    if (!token) {
+      return res.status(401).json({ message: 'Sin token, autorización denegada' });
+    }
+    //Verify token
+    try {
+      const decoded = jwt.verify(token, 'MyS3cr3t');
+      req.user = decoded.user;
+      next();
+    } catch (err) {
+      res.status(401).json({ message: 'Token no es válido' });
+    }
+  } else {
+    return res.status(401).json({ message: 'Sin token, autorización denegada' });
   }
 };

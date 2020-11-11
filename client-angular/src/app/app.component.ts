@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.showAdvisers = true;
       this.username = user.username;
-      this.router.navigate(['/advisers']);
+      // this.router.navigate(['/advisers']);
     } else {
       this.router.navigate(['/login']);
     }

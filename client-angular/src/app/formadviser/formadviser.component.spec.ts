@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateAdviserComponent } from './update-adviser.component';
+import { UpdateAdviserComponent } from './formadviser.component';
 
 describe('UpdateAdviserComponent', () => {
   let component: UpdateAdviserComponent;

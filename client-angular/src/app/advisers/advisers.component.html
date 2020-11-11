@@ -1,35 +1,34 @@
-<!-- <div class="container">
-  <header class="jumbotron">
-    <p>{{ advisers }}</p>
-  </header>
-</div> -->
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Cédula</th>
-      <th scope="col">Teléfono</th>
-      <th scope="col">Fecha de Nacimiento</th>
-      <th scope="col">Genéro</th>
-      <th scope="col">Cliente</th>
-      <th scope="col">Sede</th>
-      <th scope="col">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor='let adviser of advisers'>
-      <td>{{adviser.full_name}}</td>
-      <td>{{adviser.legal_id}}</td>
-      <td>{{adviser.phone}}</td>
-      <td>{{adviser.date_of_birth}}</td>
-      <td>{{adviser.gender}}</td>
-      <td>{{adviser.client}}</td>
-      <td>{{adviser.headquarters}}</td>
-      <td>
-        <a class="btn btn-sm btn-secondary m-1" href="/advisers/editar/{{adviser.id}}">Editar</a>
-        <a class="btn btn-sm btn-danger m-1" href="#"><i class="fas fa-trash"></i></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <a href="/addAdviser" class="btn btn-primary m-1">Agregar</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cédula</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Fecha de Nacimiento</th>
+        <th scope="col">Genéro</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Sede</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let adviser of advisers'>
+        <td>{{adviser.full_name}}</td>
+        <td>{{adviser.legal_id}}</td>
+        <td>{{adviser.phone}}</td>
+        <td>{{adviser.date_of_birth}}</td>
+        <td>{{adviser.gender}}</td>
+        <td>{{adviser.client}}</td>
+        <td>{{adviser.headquarters}}</td>
+        <td>{{adviser.age}}</td>
+        <td>
+          <a class="btn btn-sm btn-secondary m-1" href="/advisers/editar/{{adviser.id}}">Editar</a>
+          <button class="btn btn-sm btn-danger m-1" (click)="delete(adviser.id)"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

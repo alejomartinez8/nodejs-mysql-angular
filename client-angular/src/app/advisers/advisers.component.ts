@@ -39,4 +39,20 @@ export class AdvisersComponent implements OnInit {
     }
   }
 
+  delete(id: number): void {
+    this.adviserService.delete(id).subscribe(
+      data => {
+        console.log(data);
+        this.reloadPage();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+
 }

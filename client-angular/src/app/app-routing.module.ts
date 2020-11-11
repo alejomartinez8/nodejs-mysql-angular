@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'addAdviser', component: FormAdviserComponent },
   { path: 'advisers', component: AdvisersComponent },
-  { path: 'updateAdviser/:id', component: FormAdviserComponent }
+  { path: 'updateAdviser/:id', component: FormAdviserComponent },
+  { path: '', redirectTo: '/advisers', pathMatch: 'full' }
 ];
 
 @NgModule({

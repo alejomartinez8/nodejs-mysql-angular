@@ -18,7 +18,18 @@ export class FormAdviserComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   isUpdate = false;
-  adviser: Adviser = {};
+  adviser: Adviser = {
+    id: null,
+    full_name: '',
+    legal_id: null,
+    phone: null,
+    date_of_birth: null,
+    gender: '',
+    client: '',
+    headquarters: '',
+    user: null,
+    age: null
+  };
 
   constructor(
     private adviserService: AdviserService,
@@ -51,32 +62,40 @@ export class FormAdviserComponent implements OnInit {
   onSubmit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      console.log('actualizar adviser!', { ...this.adviser, ...this.form });
-      this.adviserService.update(this.adviser.id, { ...this.adviser, ...this.form }).subscribe(
-        data => {
-          console.log(data);
-          // this.isSuccessful = true;
-          // this.isSignUpFailed = false;
-        },
-        err => {
-          this.errorMessage = err.error.message;
-          this.isSignUpFailed = true;
-        }
-      );
+      this.updateAdviser();
     } else {
-      this.adviserService.create(this.form).subscribe(
-        data => {
-          console.log(data);
-          this.isSuccessful = true;
-          this.isSignUpFailed = false;
-          this.router.navigate(['/advisers']);
-        },
-        err => {
-          this.errorMessage = err.error.message;
-          this.isSignUpFailed = true;
-        }
-      );
+      this.addAdviser();
     }
+  }
+
+  updateAdviser(): void {
+    this.adviserService.update(this.adviser.id, { ...this.adviser, ...this.form }).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.router.navigate(['/advisers']);
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
+
+  addAdviser(): void {
+    this.adviserService.create(this.form).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.router.navigate(['/advisers']);
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
 
   goBack(): void {

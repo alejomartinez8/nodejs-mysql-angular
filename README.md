@@ -9,6 +9,11 @@ $ cd /server
 $ npm install
 $ npm run dev
 ```
+### DB Config
+
+Create DB and tables with sql files
+/model/adviser.example.sql
+/model/user.example.sql
 
 ### Client - Angular
 

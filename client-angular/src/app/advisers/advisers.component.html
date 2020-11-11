@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Cédula</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col">Fecha de Nacimiento</th>
+      <th scope="col">Genéro</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Sede</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let adviser of advisers'>
+      <td>{{adviser.full_name}}</td>
+      <td>{{adviser.legal_id}}</td>
+      <td>{{adviser.phone}}</td>
+      <td>{{adviser.date_of_birth}}</td>
+      <td>{{adviser.gender}}</td>
+      <td>{{adviser.client}}</td>
+      <td>{{adviser.headquarters}}</td>
+      <td>
+        <a class="btn btn-sm btn-secondary mr-1 mb-1" href="/advisers/editar">Editar</a>
+        <a class="btn btn-sm btn-danger" href="#">Eliminar</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const adviserRoutes = require('./src/routes/adviser.routes');
-const userRoutes = require('./src/routes/user.routes');
+const authRoutes = require('./src/routes/user.routes');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1/advisers', adviserRoutes);
-app.use('/api/v1/user', userRoutes);
+app.use('/api/v1/auth', authRoutes);
 
 const port = process.env.PORT || 5000;
 

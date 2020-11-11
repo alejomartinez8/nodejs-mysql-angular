@@ -7,5 +7,6 @@ export interface Adviser {
   gender: string;
   client: string;
   headquarters: string;
+  user: number;
   age: number;
 }

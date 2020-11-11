@@ -10,7 +10,7 @@ exports.login = function (req, res) {
       console.log(err);
       res.status(400).send({ error: true, message: err });
     } else {
-      res.json({ token });
+      res.json(token);
     }
   });
 };

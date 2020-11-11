@@ -12,6 +12,10 @@ export class AdviserService {
   constructor(private http: HttpClient) { }
 
   getAllAdvisers(): Observable<any> {
-    return this.http.get(API_URL, { responseType: 'text' });
+    return this.http.get(API_URL, { responseType: 'json' });
+  }
+
+  getById(): Observable<any> {
+    return this.http.get(API_URL, { responseType: 'json' });
   }
 }

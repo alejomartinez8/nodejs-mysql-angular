@@ -1,3 +1,9 @@
+<!-- <div class="container">
+  <header class="jumbotron">
+    <p>{{ advisers }}</p>
+  </header>
+</div> -->
+
 <table class="table">
   <thead>
     <tr>
@@ -21,8 +27,8 @@
       <td>{{adviser.client}}</td>
       <td>{{adviser.headquarters}}</td>
       <td>
-        <a class="btn btn-sm btn-secondary mr-1 mb-1" href="/advisers/editar/{{adviser.id}}">Editar</a>
-        <a class="btn btn-sm btn-danger" href="#">Eliminar</a>
+        <a class="btn btn-sm btn-secondary m-1" href="/advisers/editar/{{adviser.id}}">Editar</a>
+        <a class="btn btn-sm btn-danger m-1" href="#"><i class="fas fa-trash"></i></a>
       </td>
     </tr>
   </tbody>

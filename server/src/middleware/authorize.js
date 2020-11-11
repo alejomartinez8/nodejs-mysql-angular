@@ -4,7 +4,7 @@ module.exports = function (req, res, next) {
   //Get token from header
 
   const token = req.headers.authorization.split(' ')[1];
-  console.log(token);
+  console.log('token: ', token);
 
   //Check if token exist
   if (!token) {

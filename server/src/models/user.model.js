@@ -14,14 +14,21 @@ User.login = function (username, password, result) {
       console.log('error login', err);
       result(err, null);
     } else {
-      console.log(res[0].password, password);
-      if (!res[0].active) {
-        result('Usuario no activo', null);
-      } else if (res[0].password === password) {
-        const token = generateJwtToken(res[0]);
-        result(null, token);
-      } else {
+      const user = res[0];
+
+      if (!user) {
         result('Usuario o contraseña no válida', null);
+      } else if (!user.active) {
+        result('Usuario no activo', null);
+      } else {
+        console.log('Login exitoso');
+        const token = generateJwtToken(res[0]);
+        result(null, {
+          id: user.id,
+          username: user.username,
+          active: user.active,
+          accessToken: token
+        });
       }
     }
   });

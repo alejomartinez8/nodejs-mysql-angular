@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Adviser } from '../adviser';
+import { Adviser } from '../_model/adviser';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Adviser } from '../_model/adviser';
 
-const API_URL = 'http://localhost:5000/api/v1/advisers/';
+const API_URL = 'http://localhost:5000/api/v1/advisers';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +26,9 @@ export class AdviserService {
   }
 
   update(id: number, adviser: Adviser): Observable<any> {
+    console.log(adviser);
     const url = `${API_URL}/${id}`;
-    return this.http.put(url, { body: adviser }, { responseType: 'json' });
+    return this.http.put(url, adviser, { responseType: 'json' });
   }
 
   delete(id: number): Observable<any> {

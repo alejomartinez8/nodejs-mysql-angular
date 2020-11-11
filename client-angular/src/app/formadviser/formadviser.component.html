@@ -1,7 +1,9 @@
 <div class="col-md-12">
+  <button class="btn btn-secondary mb-2" (click)="goBack()">Atrás</button>
+
   <div class="card">
     <div class="card-header">
-      <h2 class="text-primary">Agregar Agente</h2>
+      <h2 class="text-primary">{{isUpdate ? "Actualizar Agente": "Agregar Agente"}}</h2>
     </div>
 
     <div class="card-body">
@@ -9,7 +11,8 @@
 
         <div class="form-group">
           <label for="full_name">Nombre Completo</label>
-          <input type="text" class="form-control" name="full_name" [(ngModel)]="form.full_name" #full_name="ngModel" />
+          <input type="text" class="form-control" name="full_name" [(ngModel)]="form.full_name" #full_name="ngModel"
+            [value]="adviser.full_name" />
           <div class="alert-danger" *ngIf="f.submitted && full_name.invalid">
             <div *ngIf="full_name.errors.required">Nombre Completo Requerido</div>
           </div>
@@ -18,37 +21,40 @@
         <div class="form-group">
           <label for="legal_id">Cédula: </label>
           <input type="number" class="form-control col-sm-6" name="legal_id" [(ngModel)]="form.legal_id"
-            #legal_id="ngModel">
+            #legal_id="ngModel" [value]="adviser.legal_id">
         </div>
 
         <div class="form-group">
           <label for="phone">Teléfono: </label>
-          <input type="number" class="form-control col-sm-6" name="phone" [(ngModel)]="form.phone" #phone="ngModel">
+          <input type="number" class="form-control col-sm-6" name="phone" [(ngModel)]="form.phone" #phone="ngModel"
+            [value]="adviser.phone">
         </div>
 
         <div class="form-group">
           <label for="date_of_birth">Fecha Nacimiento: </label>
           <input type="date" class="form-control col-sm-6" name="date_of_birth" [(ngModel)]="form.date_of_birth"
-            #date_of_birth="ngModel">
+            #date_of_birth="ngModel" [value]="adviser.date_of_birth">
         </div>
 
         <div class="form-group">
           <label for="gender">Género: </label>
-          <select type="date" class="form-control col-sm-6" name="gender" [(ngModel)]="form.gender" #gender="ngModel">
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
+          <select type="date" class="form-control col-sm-6" name="gender" [(ngModel)]="form.gender" #gender="ngModel"
+            [value]="adviser.gender">
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="client">Cliente: </label>
-          <input type="text" class="form-control col-sm-6" name="client" [(ngModel)]="form.client" #client="ngModel">
+          <input type="text" class="form-control col-sm-6" name="client" [(ngModel)]="form.client" #client="ngModel"
+            [value]="adviser.client">
         </div>
 
         <div class="form-group">
           <label for="headquarters">Sede: </label>
           <select type="date" class="form-control col-sm-6" name="headquarters" [(ngModel)]="form.headquarters"
-            #gender="ngModel">
+            #gender="ngModel" [value]="adviser.headquarters">
             <option value="Ruta N">Ruta N</option>
             <option value="Puerto Seco">Puerto Seco</option>
             <option value="Buro">Buro</option>
@@ -57,7 +63,7 @@
 
 
         <div class="form-group">
-          <button class="btn btn-primary btn-block">Agregar</button>
+          <button class="btn btn-primary btn-block">{{isUpdate ? "Actualizar": "Agregar"}}</button>
         </div>
 
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
@@ -66,7 +72,7 @@
       </form>
 
       <div class="alert alert-success" *ngIf="isSuccessful">
-        Asesor Agregado
+        {{isUpdate ? "Asesor Actualizado": "Asesor Agregado"}}
       </div>
     </div>
   </div>

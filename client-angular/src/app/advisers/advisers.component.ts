@@ -25,18 +25,22 @@ export class AdvisersComponent implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
-      this.adviserService.getAllAdvisers().subscribe(
-        data => {
-          console.log(data);
-          this.advisers = data;
-        },
-        err => {
-          this.advisers = JSON.parse(err.error).message;
-        }
-      );
+      this.getAdvisers();
     } else {
       this.router.navigate(['/login']);
     }
+  }
+
+  getAdvisers(): void {
+    this.adviserService.getAllAdvisers().subscribe(
+      data => {
+        console.log(data);
+        this.advisers = data;
+      },
+      err => {
+        this.advisers = JSON.parse(err.error).message;
+      }
+    );
   }
 
   delete(id: number): void {

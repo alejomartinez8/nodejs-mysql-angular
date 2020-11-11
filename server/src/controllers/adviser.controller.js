@@ -32,10 +32,11 @@ exports.update = function (req, res) {
   if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
     res.status(400).send({ error: true, message: 'Enviar todos los campos requeridos' });
   } else {
-    const adviser = new Adviser({ ...req.body, user: req.user.id });
-    Adviser.update(req.params.id, adviser, function (err, adviser) {
+    const adviserToUpdate = new Adviser(req.body);
+
+    Adviser.update(req.params.id, adviserToUpdate, function (err, result) {
       if (err) res.send(err);
-      res.json({ error: false, message: 'Asesor actualizado satisfactoriamente', data: adviser });
+      res.json({ error: false, message: 'Asesor actualizado satisfactoriamente' });
     });
   }
 };
@@ -43,7 +44,6 @@ exports.update = function (req, res) {
 exports.delete = function (req, res) {
   Adviser.delete(req.params.id, function (err, result) {
     if (err) res.send(err);
-    // console.log(result);
     res.json({ error: false, message: 'Asesor eliminado' });
   });
 };
